@@ -1,8 +1,10 @@
 interface Partida {
+  carta:number,
   puntos:number,
   cartasGastadas: Array<number>
 }
 export const partida:Partida = {
+  carta: 0,
   puntos:0,
   cartasGastadas:[]
 }
@@ -18,5 +20,5 @@ export type Estado =
   | "CLAVADO"
   | "PASADO"
   | "GAME_OVER"
-  | "POR_DEBAJO";
+  | "ERROR";
 

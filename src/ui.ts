@@ -26,7 +26,7 @@ export const mostrarMensaje = (estado: Estado) => {
     case "PASADO":
       mensaje = `Te has pasado 😬`;
       break;
-    default:
+    case "ERROR":
       mensaje = "No se que ha pasado, pero no deberías estar aquí";
       break;
   }
@@ -118,19 +118,19 @@ export const comprobarPuntuacion = (): void => {
   const estadoPartida : Estado = obtenerEstadoPartida(partida.puntos);
 
   mostrarMensaje(estadoPartida);
-
+ 
   gestionarFin();
 };
 
 export const dameCarta = (): void => {
-  const carta = calcularNumeroCarta();
-  if(partida.cartasGastadas.includes(carta)){
+  partida.carta = calcularNumeroCarta();
+  if(partida.cartasGastadas.includes(partida.carta)){
     dameCarta();
   }else{
-    partida.cartasGastadas.push(carta);    
-    const urlCarta = obtenerUrlCarta(carta);
+    partida.cartasGastadas.push(partida.carta);    
+    const urlCarta = obtenerUrlCarta(partida.carta);
     muestraCarta(urlCarta);
-    const puntosCarta = obtenerPuntosCarta(carta);
+    const puntosCarta = obtenerPuntosCarta(partida.carta);
     const puntosSumados = sumarPuntos(puntosCarta);
     actualizarPuntos(puntosSumados);
     muestraPuntuacion();

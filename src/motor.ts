@@ -2,7 +2,7 @@ import {partida, Estado} from "./model";
 
 
 export const calcularNumeroCarta = () => {
- const numeroAleatorio= Math.floor(Math.random() * 10) + 1;
+ let numeroAleatorio= Math.floor(Math.random() * 10) + 1;
   if (numeroAleatorio > 7) {
     return numeroAleatorio + 2;
   }
@@ -63,6 +63,9 @@ export const actualizarPuntos = (puntosActuales: number) => {
 
 export const obtenerEstadoPartida=(puntos:number): Estado =>{
 
+  if(puntos < 0.5){
+    return "ERROR";
+  }
   if (puntos === 7.5) {
     return "CLAVADO";
   }
@@ -78,7 +81,7 @@ export const obtenerEstadoPartida=(puntos:number): Estado =>{
   if (puntos > 7.5) {
     return "PASADO";
   }
-  return "POR_DEBAJO";
+  return "ERROR";
 }
 
 
