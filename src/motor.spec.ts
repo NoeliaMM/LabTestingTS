@@ -3,8 +3,7 @@ import { vi } from "vitest";
 import { obtenerEstadoPartida , calcularNumeroCarta,obtenerPuntosCarta} from "./motor";
 import { Estado,partida } from "./model";
 
-// Pruebas unitarias para comprobar si un jugador ha ganado el juego o no.
-
+// Test para comprobar el resultado de la partida y saber si un jugador ha ganado el juego o no.
 describe("obtenerEstadoPartida", () => {
   it('Debería mostrar "CLAVADO" cuando los puntos son 7.5', () => {
 
@@ -54,8 +53,7 @@ describe("obtenerEstadoPartida", () => {
 
   it('Debería mostrar "ERROR" cuando los puntos son menos que 0.5', () => {
 
-    const puntos: number = -1;
-    // vi.spyOn(partida, "puntos", "get").mockReturnValue(1); 
+    const puntos: number = -1;  
 
     const resultado : Estado = obtenerEstadoPartida(puntos);
 
@@ -64,9 +62,7 @@ describe("obtenerEstadoPartida", () => {
 
 });
 
-// Test para comprobar que calcularNumeroCarta devuelve las cartas de la baraja excepto 8 y 9
-
-
+// Test para comprobar que calcularNumeroCarta devuelve las cartas de la baraja del 1 al 12, excepto 8 y 9
 describe('calcularNumeroCarta', () => {
 
   it('Debe devolver una carta con valor 1 al 7 y 10,11,12', () => {
@@ -82,7 +78,7 @@ describe('calcularNumeroCarta', () => {
 // Test para comprobar que la función obtenerPuntosCarta devuelve el valor de la carta
 describe('obtenerPuntosCarta', () => {
 
-  it('Si el numero obtenido es entre 1 y 7 el resultado debe ser el valor corresponidiente', () => {
+  it('Si el número obtenido está entre 1 y 7 el resultado debe ser el valor correspondiente', () => {
   
    vi.spyOn(partida, 'carta','get').mockReturnValue(3);   
 
@@ -91,7 +87,7 @@ describe('obtenerPuntosCarta', () => {
 
   });
 
-  it('Si el numero obtenido es mayor que 7 el resultado debe ser 0.5', () => {
+  it('Si el número obtenido es mayor que 7 el resultado debe ser 0.5', () => {
   
     vi.spyOn(partida, 'carta','get').mockReturnValue(8);   
  
